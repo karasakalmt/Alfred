@@ -2,6 +2,7 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("@openzeppelin/hardhat-upgrades");
 require("@nomiclabs/hardhat-etherscan");
+
 require("dotenv").config();
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -12,6 +13,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+const ETH_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -26,8 +28,20 @@ module.exports = {
       url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
     },
+    gorli: {
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    mumbai: {
+      url: `https://speedy-nodes-nyc.moralis.io/${process.env.MORALIS_API_KEY}/polygon/mumbai`,
+      accounts: [process.env.PRIVATE_KEY],
+    },
   },
+
+
+
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
-  },
-};
+    apiKey:  process.env.ETHERSCAN_API_KEY
+    
+  }
+}

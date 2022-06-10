@@ -1,11 +1,12 @@
 import { GiCrossedChains } from 'react-icons/gi'
 import { Link } from 'react-router-dom';
+import logo from '../logo_with_name.png';
 
 const Header = () => {
     return(
         <nav>
             <div className="nav-left">
-                <Link to="/"><p>Logo</p></Link>
+                <Link to="/"><img src={logo} style={{maxWidth: '180px'}} alt="logo"/></Link>
             </div>
             <div className="nav-right">
                 <ul>
