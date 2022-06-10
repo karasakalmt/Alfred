@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 pragma solidity ^0.8.0;
 
 
-contract ProxyTest is Initializable {
+contract ProxyTestV2 is Initializable {
     
     uint256 public number;
 
