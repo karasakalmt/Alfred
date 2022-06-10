@@ -218,3 +218,25 @@ textarea {
   background-color: var(--base3);
   resize: none;
 }
+
+/* DASHBOARD */
+
+.dashboard{
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.alfred{
+  font-weight: 900;
+  font-size: 10em;
+  color: var(--base3);
+}
+
+.dashboard-content{
+  font-weight: 900;
+  font-size: 4em;
+  color: var(--base0);
+}
