@@ -10,7 +10,7 @@ const proposal = {
                   return 'Hello Contracts';
               }
           }`, 
-  address: '0xE23AeB5c04b83D7b908fcb64E99327835940Db53', 
+  address: '0x000000000000000000000000000000000', 
   bounty: 0, 
   vote: {
     yes: 0,
@@ -18,11 +18,11 @@ const proposal = {
   }, 
   discussion: [
     {
-      address:'0xE23AeB5c04b83D7b908fcb64E99327835940Db53',
+      address:'0x000000000000000000000000000000000',
       comment:'It looks awesome.'
     },
     {
-      address:'0xE23AeB5c04b83D7b908fcb64E99327835940Db54',
+      address:'0x000000000000000000000000000000000',
       comment:'This is very bad.'
     }
   ]
@@ -44,7 +44,7 @@ const Proposal = () => {
       </div>
       <div className="proposal-list-view">
         <h2 className="proposal-title">Content</h2> 
-        <p className="proposal-list-content" style={{margin: '10px 0px'}}>{proposal.content }</p>
+        <p className="proposal-list-content" style={{margin: '10px 0px'}}>{proposal.content}</p>
       </div>
       {proposal.label ? <div className="proposal-list-view">
         <h2 className="proposal-title">Code</h2> 
@@ -59,8 +59,46 @@ const Proposal = () => {
         />
         </span>
       </div>: ''}
+      <div className="proposal-list-view">
+        <h2 className="proposal-title">Vote</h2> 
+        <div className="vote-container">
+            <button className="vote-yes">Yes</button>
+            <button className="vote-no">No</button>
+        </div>
+        <hr className="title-seperator"/>
+        <h2 className="proposal-title" style={{margin: '10px 0px'}}>Bounty</h2>
+        <p className="proposal-list-content" style={{margin: '10px 0px'}}>Current Bounty: {proposal.bounty}</p>
+        <form>
+            <label style={{margin: '0px 10px 0px 0px'}}>
+                Raise Bounty:
+                <input className="raise-text" type="text" name="name" />
+                ETH
+            </label>
+            <input className="raise-button" type="submit" value="Raise" />
+        </form>
+        <hr className="title-seperator" style={{margin: '10px 0px'}}/>
+        <h2 className="proposal-title" style={{margin: '10px 0px'}}>Discussion</h2>
+        <form>
+            <label style={{margin: '0px 10px 0px 0px'}}>
+                <textarea placeholder="Write your comment here..."></textarea>
+            </label>
+            <input className="submit-button" type="submit" value="Share Comment" />
+        </form>
+      {proposal.discussion.length>0 ? <>
+        {proposal.discussion.map((discussion) => {
+            return(<div style={{margin: '10px 0px'}}>
+            <hr className="title-seperator"/>
+            <p className="proposal-list-content" style={{margin: '10px 0px'}}>{discussion.address}</p>
+            <p className="proposal-list-content" style={{margin: '10px 0px'}}>{discussion.comment}</p>
+            </div>)}
+            )
+        }
+        </>: ''}
+      </div>
     </div>
   )
 }
+
+//- Proposal detail page (title, content, code, team address, bounty, vote, discussion)
 
 export default Proposal;
