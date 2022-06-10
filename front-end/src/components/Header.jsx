@@ -6,7 +6,7 @@ const Header = () => {
     return(
         <nav>
             <div className="nav-left">
-                <Link to="/"><img src={logo} style={{maxWidth: '180px'}} alt="logo"/></Link>
+                <Link to="/"><img src={logo} style={{maxWidth: '120px'}} alt="logo"/></Link>
             </div>
             <div className="nav-right">
                 <ul>
