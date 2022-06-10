@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol"
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "./UpgradeVersion.sol";
+pragma solidity ^0.8.4;
 
-pragma solidity ^0.8.0;
 
-
-contract ProxyTest is Initializable {
+contract ProxyTest is  Initializable, UpgradeVersion, OwnableUpgradeable {
     
     uint256 public number;
 
@@ -15,10 +15,10 @@ contract ProxyTest is Initializable {
         __Ownable_init();
     }
 
-    function increseNumber() public {
+    function increseNumber() public virtual {
         number++;
     }
-     function decreaseNumber() public {
+     function decreaseNumber() public virtual {
         number--;
     }
 
