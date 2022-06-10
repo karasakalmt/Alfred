@@ -45,7 +45,6 @@ nav {
   padding: 20px 30px;
   font-size: 20px;
   flex-flow: row nowrap;
-  font-family: 'PT Mono', monospace;
 }
 
 a {
@@ -59,7 +58,6 @@ a {
   background-color: var(--base3);
   color: var(--base01);
   border: 0px solid;
-  font-family: 'PT Mono', monospace;
   cursor: pointer;
   border: 0 solid;
   border-radius: 5px;
