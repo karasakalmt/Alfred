@@ -15,7 +15,6 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
   RainbowKitProvider,
-  darkTheme,
 } from '@rainbow-me/rainbowkit';
 import {
   chain,
@@ -25,6 +24,8 @@ import {
 } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import alfredTheme from './utils/customRainbowTheme';
+
 
 const { chains, provider } = configureChains(
   [chain.ropsten],
@@ -50,12 +51,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <WagmiConfig client={wagmiClient}>
     <RainbowKitProvider chains={chains}
-      theme={darkTheme({
-        accentColor: '#fdf6e3',
-        accentColorForeground: '#586e75',
-        borderRadius: 'medium',
-        fontStack: 'system',
-      })}
+      theme={alfredTheme}
     >
       <BrowserRouter>
         <Header/>

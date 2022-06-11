@@ -14,7 +14,7 @@ const Header = () => {
                     <li><Link to="/proposals">Proposals</Link></li>
                     <li><Link to="/create-a-proposal">Create a Proposal</Link></li>
                 </ul>
-                <ConnectButton label={<div><GiCrossedChains/> Connect Wallet</div>}/>
+                <ConnectButton label={<div><GiCrossedChains/> Connect Wallet</div>} showBalance={false}/>
             </div>
         </nav>
     )
