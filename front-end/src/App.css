@@ -247,3 +247,11 @@ textarea {
   width: 98%;
   margin: 10px 0;
 }
+
+.radio-box{
+  margin: 10px 0px;
+}
+
+.radio-box > span {
+  margin: 0px 10px 0px 0px;
+}
