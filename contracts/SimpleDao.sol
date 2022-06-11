@@ -3,6 +3,12 @@ pragma solidity ^0.8.10;
 
 import "./Pizza.sol";
 
+/*
+This is very simple dao voting contract please don't use it on production. It is just for test purposes.
+Main idea is you can create a proposal, then dao can change current contract address with new version.
+This contract just for POC.  1 vote is required for change version. You can change with new versions or turn back to old versions. 
+*/
+
 contract SimpleDao {
 
     Pizza pizza;
