@@ -55,11 +55,11 @@ const Proposal = () => {
     console.log(proposal)
   })
 
-  async function voteUpgradeToProposal(lord) {
+  async function voteChangeVersionProposal(lord) {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(address, abi, signer);
-    const tx = await contract.functions.voteUpgradeToProposal(proposalId,lord);
+    const tx = await contract.functions.voteChangeVersionProposal(proposalId,lord);
   
     const receipt = await tx.wait();
     console.log("receipt", receipt);
@@ -68,6 +68,16 @@ const Proposal = () => {
     } else{
       setProposal({vote: {yes: proposal.vote.yes, no: proposal.vote.no+1},...proposal})
     }
+  }
+
+  async function FinishChangeVersionProposal() {
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(address, abi, signer);   
+    const tx = await contract.functions.FinishChangeVersionProposal(proposalId);
+  
+    const receipt = await tx.wait();
+    console.log("receipt", receipt);
   }
 
   return (
@@ -104,9 +114,10 @@ const Proposal = () => {
       <div className="proposal-list-view">
         <h2 className="proposal-title">Vote</h2> 
         <div className="vote-container">
-            <button className="vote-yes" onClick={()=>voteUpgradeToProposal(true)}>Yes: {proposal.vote.yes}</button>
-            <button className="vote-no" onClick={()=>voteUpgradeToProposal(false)}>No: {proposal.vote.no}</button>
+            <button className="vote-yes" onClick={()=>voteChangeVersionProposal(true)}>Yes: {proposal.vote.yes}</button>
+            <button className="vote-no" onClick={()=>voteChangeVersionProposal(false)}>No: {proposal.vote.no}</button>
         </div>
+        <input className="submit-button" type="submit" value="Finish Voting" style={{margin: '10px 0px'}} onClick={()=>FinishChangeVersionProposal()}/>
         <hr className="title-seperator"/>
         <h2 className="proposal-title" style={{margin: '10px 0px'}}>Bounty</h2>
         <p className="proposal-list-content" style={{margin: '10px 0px'}}>Current Bounty: {proposal.bounty}</p>

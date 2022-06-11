@@ -1,11 +1,27 @@
 import React from 'react'
 import { useState } from 'react'
+import { ethers } from "ethers";
+import abi from '../abis/SimpleDAO.json'
 
 const CreateProposal = () => {
   const [title, setTitle] = useState('');
-  const [address, setAddress] = useState('');
+  const [addressCont, setAddress] = useState('');
   const [content, setContent] = useState('');
   const [type, setType] = useState('');
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+  const address = "0xa46ec2049cd1b95617DF848Ef07B61c49c6961CB";
+
+  const handleSubmit = async () => {
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(address, abi, signer);   
+    const tx = await contract.functions.createChangeVersionProposal(ethers.utils.formatBytes32String(title), parseInt(addressCont));
+    const receipt = await tx.wait();
+    console.log("receipt", receipt);
+    setTitle('');
+    setAddress('');
+  }
 
   return (
     <div className="container" style={{width: '50%'}}>
@@ -31,7 +47,7 @@ const CreateProposal = () => {
           Content
           <textarea onChange={(e) => setContent(e.target.value)}></textarea>
         </label>
-        <input className="submit-button" style={{backgroundColor:'#859900'}} type="submit" value="Create Proposal" />
+        <input className="submit-button" style={{backgroundColor:'#859900'}} type="submit" value="Create Proposal" onClick={async () => await handleSubmit()}/>
       </div>
     </div>
   )
