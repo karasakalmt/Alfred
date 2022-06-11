@@ -13,8 +13,8 @@ const Proposals = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
     const provider = new ethers.providers.JsonRpcProvider("https://ropsten.infura.io/v3/42d2fdb19ea44752b70d96e723a4b829"/*+process.env.INFURA_ID8*/);
-    const address = "0xa46ec2049cd1b95617DF848Ef07B61c49c6961CB";
-    const proxyAddress = "0x368853C9B1973E328700cE70fe3d2a1ebe6E1De1";
+    const address = "0xfD02940f3fD8138c013ed583f274143fe259795E";
+    const proxyAddress = "0x0e071445f709583e26697C309151E69a5a13E49F";
     async function changeVersionNumber() {
       const contract = new ethers.Contract(address, abi, provider);   
       const result = await contract.functions.changeVersionNumber();
@@ -39,7 +39,8 @@ const Proposals = () => {
         return proposalsTemp;
     }
     changeVersionNumber().then((verNum) => {
-      if(proposals.length<verNum-1){
+      console.log(verNum)
+      if(proposals.length<verNum){
         changeVersions(verNum).then((item) => setProposals(proposals.concat(item)));
         console.log('out verlog', verNum)
       }

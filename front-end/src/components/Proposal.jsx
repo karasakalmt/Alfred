@@ -10,7 +10,7 @@ const Proposal = () => {
   const [proposal, setProposal] = useState(null);
   // const provider = new ethers.providers.JsonRpcProvider("https://ropsten.infura.io/v3/42d2fdb19ea44752b70d96e723a4b829"/*+process.env.INFURA_ID8*/);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-  const address = "0xa46ec2049cd1b95617DF848Ef07B61c49c6961CB";
+  const address = "0xfD02940f3fD8138c013ed583f274143fe259795E";
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
 

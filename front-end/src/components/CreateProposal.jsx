@@ -10,7 +10,7 @@ const CreateProposal = () => {
   const [type, setType] = useState('');
 
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-  const address = "0xa46ec2049cd1b95617DF848Ef07B61c49c6961CB";
+  const address = "0xfD02940f3fD8138c013ed583f274143fe259795E";
 
   const handleSubmit = async () => {
     await provider.send("eth_requestAccounts", []);
