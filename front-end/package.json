@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "bytes32": "^0.0.3",
     "dotenv": "^16.0.1",
     "ethers": "^5.6.8",
     "lodash.merge": "^4.6.2",
