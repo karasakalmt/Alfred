@@ -40,7 +40,7 @@ const Proposals = () => {
     }
     changeVersionNumber().then((verNum) => {
       console.log(verNum)
-      if(proposals.length<verNum){
+      if(proposals.length<verNum-1 || proposals.length===1){
         changeVersions(verNum).then((item) => setProposals(proposals.concat(item)));
         console.log('out verlog', verNum)
       }
