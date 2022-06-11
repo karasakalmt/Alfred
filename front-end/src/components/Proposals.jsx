@@ -21,20 +21,19 @@ const Proposals = () => {
 
     async function changeVersions() {
       const verNum = await changeVersionNumber();
-      for(let propID=1; propID <= verNum; propID++){
-        if(verNum<proposals.length){
-          break;
+      if(verNum>proposals.length-1){
+        for(let propID=1; propID <= verNum; propID++){
+          const contract = new ethers.Contract(address, abi, provider);   
+          const result = await contract.functions.changeVersions(propID);
+        
+          setProposals(proposals.concat({
+              id: propID,
+              title: result.name,
+              // title: ethers.utils.parseBytes32String(result.name),
+              content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit mauris nibh, sed faucibus dolor laoreet pellentesque. Fusce orci arcu, semper vitae rutrum nec, dignissim et nunc. In nec massa non dui mattis euismod sit amet eget nulla. Nunc at hendrerit erat, dignissim scelerisque felis. Mauris sit amet sem leo. Vestibulum tincidunt pellentesque sagittis. Etiam cursus non est ut sollicitudin. Vestibulum auctor, nulla auctor pharetra luctus, ipsum nunc mollis massa, non tincidunt lorem urna ut lectus. Vestibulum dapibus purus vitae semper maximus. Cras in libero at lacus porttitor tempus vitae ac metus.',
+              label: 0
+            }));
         }
-        const contract = new ethers.Contract(address, abi, provider);   
-        const result = await contract.functions.changeVersions(propID);
-      
-        setProposals(proposals.concat({
-            id: propID,
-            title: result.name,
-            // title: ethers.utils.parseBytes32String(result.name),
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit mauris nibh, sed faucibus dolor laoreet pellentesque. Fusce orci arcu, semper vitae rutrum nec, dignissim et nunc. In nec massa non dui mattis euismod sit amet eget nulla. Nunc at hendrerit erat, dignissim scelerisque felis. Mauris sit amet sem leo. Vestibulum tincidunt pellentesque sagittis. Etiam cursus non est ut sollicitudin. Vestibulum auctor, nulla auctor pharetra luctus, ipsum nunc mollis massa, non tincidunt lorem urna ut lectus. Vestibulum dapibus purus vitae semper maximus. Cras in libero at lacus porttitor tempus vitae ac metus.',
-            label: 0
-          }));
       }
     }
     changeVersions();
