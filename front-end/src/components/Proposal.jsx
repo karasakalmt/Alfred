@@ -58,7 +58,7 @@ const Proposal = () => {
   async function voteUpgradeToProposal(lord) {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(address, abi, signer);   
+    const contract = new ethers.Contract(address, abi, signer);
     const tx = await contract.functions.voteUpgradeToProposal(proposalId,lord);
   
     const receipt = await tx.wait();
