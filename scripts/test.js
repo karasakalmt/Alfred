@@ -1,4 +1,5 @@
 const { ethers, upgrades } = require("hardhat");
+// test contract source -> https://blog.logrocket.com/using-uups-proxy-pattern-upgrade-smart-contracts/
 
 const SLICES = 8;
 async function main() {

@@ -10,7 +10,7 @@ const CreateProposal = () => {
       <div className='proposal-list-view'>
         <label for="proposal-title">Title</label>
         <input className="proposal-text-box" type="text" name="proposal-title"/>
-        <label for="proposal-title">GitHub URL</label>
+        <label for="proposal-title">GitHub/IPFS URL</label>
         <input className="proposal-text-box" type="text" name="proposal-title"/>
         <label style={{margin: '0px 10px 0px 0px'}}>
           Content
